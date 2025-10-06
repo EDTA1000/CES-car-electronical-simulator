@@ -1,0 +1,9 @@
+
+git checkout -b client
+git add client/
+git commit -m "Add frontend"
+git push origin client
+git checkout -b server
+git add server/
+git commit -m "Add backend"
+git push origin server
