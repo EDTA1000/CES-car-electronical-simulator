@@ -1,9 +1,30 @@
+name: CES Simulator CI
 
-git checkout -b client
-git add client/
-git commit -m "Add frontend"
-git push origin client
-git checkout -b server
-git add server/
-git commit -m "Add backend"
-git push origin server
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'client/**'
+      - 'server/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'client/**'
+      - 'server/**'
+
+jobs:
+  build-client:
+    name: Build Frontend
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: cd client && npm install
+      - name: Build project
+        run: cd client && npm run build
+
+  test-server
