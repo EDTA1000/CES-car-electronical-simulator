@@ -7,44 +7,56 @@
   display: inline-block;
 }
 
-.ces-logo {
-  height: 200px;
-  animation: rotate 5s linear infinite;
+.ces-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  text-align: center;
 }
 
+/* لوگوی اصلی */
+.ces-logo {
+  width: 100%;
+  height: auto;
+  z-index: 1;
+}
+
+/* چرخ با افکت چرخش */
+.wheel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  transform: translate(-50%, -50%);
+  animation: spin 4s linear infinite;
+  z-index: 2;
+}
+
+/* رعد و برق با افکت چشمک‌زن */
 .lightning {
   position: absolute;
-  width: 20px;
-  height: 40px;
-  background: yellow;
-  top: 10px;
+  bottom: 10px;
   left: 50%;
+  width: 60px;
   transform: translateX(-50%);
   animation: flicker 1s infinite;
-  opacity: 0.8;
+  z-index: 3;
 }
 
-/* چرخش لوگو */
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* انیمیشن چرخش */
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* نوسان رعد و برق */
+/* انیمیشن چشمک‌زن */
 @keyframes flicker {
-  0%, 100% {
-    opacity: 0.8;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.2;
-    transform: scale(1.2);
-  }
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.1); }
 }
+
 .subscribe-button {
   background-color: #61dafb;
   color: #fff;
