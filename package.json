@@ -1,7 +1,7 @@
 {
   "name": "subscription-backend",
   "version": "1.0.0",
-  "homepage": "https://edta1000.github.io/CES-car-electronical-simulator"
+  "homepage": "https://edta1000.github.io/CES-car-electronical-simulator",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
