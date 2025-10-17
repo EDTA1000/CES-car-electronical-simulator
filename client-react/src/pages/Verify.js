@@ -17,11 +17,11 @@ function Verify() {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          localStorage.setItem('ces-paid', 'true'); // ذخیره وضعیت پرداخت
+          localStorage.setItem('ces-paid', 'true'); // فعال‌سازی اشتراک
           setStatus('✅ پرداخت با موفقیت انجام شد! در حال انتقال...');
           setTimeout(() => {
             window.location.href = '/CES-car-electronical-simulator/';
-          }, 2000); // انتقال پس از ۲ ثانیه
+          }, 2000);
         } else {
           setStatus('❌ پرداخت ناموفق بود.');
         }
@@ -37,3 +37,4 @@ function Verify() {
 }
 
 export default Verify;
+

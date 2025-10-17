@@ -7,18 +7,25 @@ function Subscribe() {
   const handleSubmit = async () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!email.trim()) return setError('لطفاً ایمیل را وارد کنید');
+    if (!email.trim()) {
+      setError('لطفاً ایمیل را وارد کنید');
+      return;
+    }
 
     // 🔐 رمز مخفی برای عبور از پرداخت
     if (email.trim() === 'danial.alinasiri1389@gmail.com') {
+      localStorage.setItem('ces-paid', 'true'); // فعال‌سازی اشتراک
       window.location.href = '/CES-car-electronical-simulator/';
       return;
     }
 
-    if (!emailRegex.test(email)) return setError('ایمیل وارد شده معتبر نیست');
+    if (!emailRegex.test(email)) {
+      setError('ایمیل وارد شده معتبر نیست');
+      return;
+    }
 
     try {
-      const res = await fetch('https://your-backend.com/api/payment', {
+      const res = await fetch(''http://localhost:3001/api/payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
@@ -50,7 +57,7 @@ function Subscribe() {
       <button className="submit-button" onClick={handleSubmit}>
         پرداخت ۵۰۰٬۰۰۰ تومان
       </button>
-      {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
+      {error && <p className="error-message">{error}</p>}
     </div>
   );
 }

@@ -13,13 +13,6 @@
   text-align: center;
 }
 
-/* لوگوی اصلی */
-.ces-logo {
-  width: 100%;
-  height: auto;
-  z-index: 1;
-}
-
 /* چرخ با افکت چرخش */
 .wheel {
   position: absolute;
@@ -53,6 +46,13 @@
 @keyframes flicker {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.3; transform: scale(1.1); }
+}
+
+/* لوگوی اصلی */
+.ces-logo {
+  width: 100%;
+  height: auto;
+  z-index: 1;
 }
 
 /* دکمه اشتراک در صفحه اصلی */
