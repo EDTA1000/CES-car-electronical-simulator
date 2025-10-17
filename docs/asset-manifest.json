@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/CES-car-electronical-simulator/static/css/main.f0299df9.css",
-    "main.js": "/CES-car-electronical-simulator/static/js/main.c25d2fbf.js",
+    "main.css": "/CES-car-electronical-simulator/static/css/main.0e70fcec.css",
+    "main.js": "/CES-car-electronical-simulator/static/js/main.a9c0fa40.js",
     "static/js/453.70c73f82.chunk.js": "/CES-car-electronical-simulator/static/js/453.70c73f82.chunk.js",
     "index.html": "/CES-car-electronical-simulator/index.html",
-    "main.f0299df9.css.map": "/CES-car-electronical-simulator/static/css/main.f0299df9.css.map",
-    "main.c25d2fbf.js.map": "/CES-car-electronical-simulator/static/js/main.c25d2fbf.js.map",
+    "main.0e70fcec.css.map": "/CES-car-electronical-simulator/static/css/main.0e70fcec.css.map",
+    "main.a9c0fa40.js.map": "/CES-car-electronical-simulator/static/js/main.a9c0fa40.js.map",
     "453.70c73f82.chunk.js.map": "/CES-car-electronical-simulator/static/js/453.70c73f82.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f0299df9.css",
-    "static/js/main.c25d2fbf.js"
+    "static/css/main.0e70fcec.css",
+    "static/js/main.a9c0fa40.js"
   ]
 }

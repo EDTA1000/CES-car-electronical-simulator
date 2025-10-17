@@ -94,3 +94,27 @@
     transform: rotate(360deg);
   }
 }
+.subscribe-page {
+  text-align: center;
+  margin-top: 100px;
+  font-family: sans-serif;
+  color: #333;
+}
+
+.email-input {
+  padding: 10px;
+  margin-top: 20px;
+  width: 250px;
+  font-size: 16px;
+}
+
+.submit-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
