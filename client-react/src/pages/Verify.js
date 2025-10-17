@@ -17,9 +17,11 @@ function Verify() {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          setStatus('✅ پرداخت با موفقیت انجام شد! خوش آمدید.');
-          // می‌تونی اینجا کاربر رو به صفحه اصلی ببری:
-          // window.location.href = '/CES-car-electronical-simulator/';
+          localStorage.setItem('ces-paid', 'true'); // ذخیره وضعیت پرداخت
+          setStatus('✅ پرداخت با موفقیت انجام شد! در حال انتقال...');
+          setTimeout(() => {
+            window.location.href = '/CES-car-electronical-simulator/';
+          }, 2000); // انتقال پس از ۲ ثانیه
         } else {
           setStatus('❌ پرداخت ناموفق بود.');
         }
