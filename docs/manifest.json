@@ -1,0 +1,25 @@
+{
+  "short_name": "CES",
+  "name": "Car of Electrical Simulator",
+  "icons": [
+    {
+      "src": "/CES-car-electronical-simulator/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/CES-car-electronical-simulator/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/CES-car-electronical-simulator/logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/CES-car-electronical-simulator/",
+  "display": "standalone",
+  "theme_color": "#1e1e2f",
+  "background_color": "#ffffff"
+}
