@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 function Verify() {
   const [status, setStatus] = useState('در حال بررسی پرداخت...');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
@@ -9,15 +10,18 @@ function Verify() {
     const statusParam = query.get('Status');
 
     if (statusParam !== 'OK') {
-      setStatus('پرداخت لغو شد یا ناموفق بود.');
+      setStatus('❌ پرداخت لغو شد یا ناموفق بود.');
+      setLoading(false);
       return;
     }
 
-    fetch(`https://ces-backend-kltl.onrender.com/api/verify?authority=${authority}`)
-      .then(res => res.json())
-      .then(data => {
+    const verifyPayment = async () => {
+      try {
+        const res = await fetch(`https://ces-backend-kltl.onrender.com/api/verify?authority=${authority}`);
+        const data = await res.json();
+
         if (data.success) {
-          localStorage.setItem('ces-paid', 'true'); // فعال‌سازی اشتراک
+          localStorage.setItem('ces-paid', 'true');
           setStatus('✅ پرداخت با موفقیت انجام شد! در حال انتقال...');
           setTimeout(() => {
             window.location.href = '/CES-car-electronical-simulator/';
@@ -25,16 +29,23 @@ function Verify() {
         } else {
           setStatus('❌ پرداخت ناموفق بود.');
         }
-      })
-      .catch(() => setStatus('خطا در بررسی پرداخت.'));
+      } catch (err) {
+        console.error(err);
+        setStatus('⚠️ خطا در بررسی پرداخت. لطفاً دوباره تلاش کنید.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    verifyPayment();
   }, []);
 
   return (
     <div className="subscribe-page">
       <h1>{status}</h1>
+      {loading && <p style={{ marginTop: '10px' }}>⏳ لطفاً منتظر بمانید...</p>}
     </div>
   );
 }
 
 export default Verify;
-
