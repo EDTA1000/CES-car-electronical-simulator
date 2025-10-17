@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/CES-car-electronical-simulator/static/css/main.0e70fcec.css",
-    "main.js": "/CES-car-electronical-simulator/static/js/main.a9c0fa40.js",
+    "main.js": "/CES-car-electronical-simulator/static/js/main.8fb435a0.js",
     "static/js/453.70c73f82.chunk.js": "/CES-car-electronical-simulator/static/js/453.70c73f82.chunk.js",
     "index.html": "/CES-car-electronical-simulator/index.html",
     "main.0e70fcec.css.map": "/CES-car-electronical-simulator/static/css/main.0e70fcec.css.map",
-    "main.a9c0fa40.js.map": "/CES-car-electronical-simulator/static/js/main.a9c0fa40.js.map",
+    "main.8fb435a0.js.map": "/CES-car-electronical-simulator/static/js/main.8fb435a0.js.map",
     "453.70c73f82.chunk.js.map": "/CES-car-electronical-simulator/static/js/453.70c73f82.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0e70fcec.css",
-    "static/js/main.a9c0fa40.js"
+    "static/js/main.8fb435a0.js"
   ]
 }
