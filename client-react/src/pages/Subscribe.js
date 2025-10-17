@@ -25,7 +25,7 @@ function Subscribe() {
     }
 
     try {
-      const res = await fetch(''http://localhost:3001/api/payment', {
+      const res = await fetch('https://ces-backend-kltl.onrender.com/api/payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),

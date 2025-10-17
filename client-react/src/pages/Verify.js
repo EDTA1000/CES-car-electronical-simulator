@@ -13,7 +13,7 @@ function Verify() {
       return;
     }
 
-    fetch(`https://your-backend.com/api/verify?authority=${authority}`)
+    fetch(`https://ces-backend-kltl.onrender.com/api/verify?authority=${authority}`)
       .then(res => res.json())
       .then(data => {
         if (data.success) {
