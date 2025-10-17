@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import Subscribe from './pages/Subscribe';
+import Verify from './pages/Verify'; // اضافه‌شده
 
 function Home() {
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/subscribe" element={<Subscribe />} />
+        <Route path="/verify" element={<Verify />} /> {/* مسیر بررسی پرداخت */}
       </Routes>
     </BrowserRouter>
   );

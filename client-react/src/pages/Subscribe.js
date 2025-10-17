@@ -2,35 +2,44 @@ import React, { useState } from 'react';
 
 function Subscribe() {
   const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (email.trim() === '') {
-      setError('لطفاً ایمیل را وارد کنید');
-      setSubmitted(false);
+    if (!email.trim()) return setError('لطفاً ایمیل را وارد کنید');
+
+    // 🔐 رمز مخفی برای عبور از پرداخت
+    if (email.trim() === 'danial.alinasiri1389@gmail.com') {
+      window.location.href = '/CES-car-electronical-simulator/';
       return;
     }
 
-    if (!emailRegex.test(email)) {
-      setError('ایمیل وارد شده معتبر نیست');
-      setSubmitted(false);
-      return;
-    }
+    if (!emailRegex.test(email)) return setError('ایمیل وارد شده معتبر نیست');
 
-    // اگر همه‌چیز درست بود:
-    console.log('ایمیل معتبر ثبت شد:', email);
-    setError('');
-    setSubmitted(true);
+    try {
+      const res = await fetch('https://your-backend.com/api/payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url; // ریدایرکت به درگاه زرین‌پال
+      } else {
+        setError('خطا در دریافت لینک پرداخت');
+      }
+    } catch (err) {
+      console.error(err);
+      setError('خطا در ارتباط با سرور');
+    }
   };
 
   return (
     <div className="subscribe-page">
       <h1>صفحه اشتراک</h1>
-      <p>لطفاً ایمیل خود را وارد کنید تا در خبرنامه CES عضو شوید.</p>
-
+      <p>لطفاً ایمیل خود را وارد کنید تا به درگاه پرداخت منتقل شوید.</p>
       <input
         type="email"
         placeholder="ایمیل شما"
@@ -38,13 +47,10 @@ function Subscribe() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-
       <button className="submit-button" onClick={handleSubmit}>
-        ثبت‌نام
+        پرداخت ۵۰۰٬۰۰۰ تومان
       </button>
-
       {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
-      {submitted && <p style={{ color: 'green', marginTop: '10px' }}>✅ ایمیل شما با موفقیت ثبت شد!</p>}
     </div>
   );
 }
