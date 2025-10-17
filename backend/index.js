@@ -37,6 +37,10 @@ app.post('/api/payment', async (req, res) => {
   }
 });
 
+app.get('/', (req, res) => {
+  res.send('✅ CES Backend is running');
+});
+
 // 📤 بررسی وضعیت پرداخت
 app.get('/api/verify', async (req, res) => {
   const { authority } = req.query;
