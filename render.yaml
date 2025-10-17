@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: ces-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MERCHANT_ID
+        value: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      - key: CALLBACK_URL
+        value: https://edta1000.github.io/CES-car-electronical-simulator/verify
