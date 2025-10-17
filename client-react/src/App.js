@@ -1,8 +1,10 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import Subscribe from './pages/Subscribe';
 
 function Home() {
+  const navigate = useNavigate();
+
   return (
     <div className="App">
       <div className="ces-container">
@@ -12,10 +14,7 @@ function Home() {
       </div>
       <button
         className="subscribe-button"
-        onClick={() =>
-          (window.location.href =
-            "/CES-car-electronical-simulator/subscribe")
-        }
+        onClick={() => navigate('/subscribe')}
       >
         اشتراک
       </button>
