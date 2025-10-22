@@ -16,10 +16,11 @@ function Home() {
 
   return (
     <div className="App">
-      <div className="ces-container">
+       <div className="ces-container">
         <img src={`${process.env.PUBLIC_URL}/CES.png`} alt="CES Logo" className="ces-logo" />
         <img src={`${process.env.PUBLIC_URL}/wheel.png`} alt="Wheel" className="wheel" />
         <img src={`${process.env.PUBLIC_URL}/lightning.png`} alt="Lightning" className="lightning" />
+       </div>
       {!hasPaid && (
         <button
           className="subscribe-button"
