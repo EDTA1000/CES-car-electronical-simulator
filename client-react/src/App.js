@@ -11,15 +11,33 @@ function Home() {
 
   useEffect(() => {
     const paid = localStorage.getItem('ces-paid') === 'true';
-    setHasPaid(paid);
+    const expire = localStorage.getItem('ces-expire');
+
+    if (paid && expire) {
+      const now = new Date();
+      const expireDate = new Date(expire);
+
+      if (expireDate > now) {
+        setHasPaid(true); // اشتراک هنوز معتبره
+      } else {
+        // اشتراک منقضی شده
+        localStorage.removeItem('ces-paid');
+        localStorage.removeItem('ces-expire');
+        setHasPaid(false);
+      }
+    } else {
+      setHasPaid(false);
+    }
   }, []);
 
   return (
     <div className="App">
-       <div className="ces-container">
-        <img src={`${process.env.PUBLIC_URL}/CES.png`} alt="CES Logo" className="ces-logo" />
-        <img src={`${process.env.PUBLIC_URL}/wheel.png`} alt="Wheel" className="wheel" />
-        <img src={`${process.env.PUBLIC_URL}/lightning.png`} alt="Lightning" className="lightning" />
+     <div className="ces-container">
+      <div className="left-side">
+       <img src={`${process.env.PUBLIC_URL}/wheel.png`} alt="Wheel" className="wheel" />
+       <img src={`${process.env.PUBLIC_URL}/lightاning.png`} alt="Lightning" className="lightning" />
+       </div>
+         <img src={`${process.env.PUBLIC_URL}/CES.png`} alt="CES Logo" className="ces-logo" />
        </div>
       {!hasPaid && (
         <button
@@ -55,25 +73,5 @@ function App() {
     </BrowserRouter>
   );
 }
- useEffect(() => {
-  const paid = localStorage.getItem('ces-paid') === 'true';
-  const expire = localStorage.getItem('ces-expire');
-
-  if (paid && expire) {
-    const now = new Date();
-    const expireDate = new Date(expire);
-
-    if (expireDate > now) {
-      setHasPaid(true); // اشتراک هنوز معتبره
-    } else {
-      // اشتراک منقضی شده
-      localStorage.removeItem('ces-paid');
-      localStorage.removeItem('ces-expire');
-      setHasPaid(false);
-    }
-  } else {
-    setHasPaid(false);
-  }
-}, []);
 
 export default App;

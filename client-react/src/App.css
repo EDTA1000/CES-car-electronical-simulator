@@ -4,55 +4,64 @@
   font-family: sans-serif;
 }
 
-/* کانتینر لوگو و انیمیشن‌ها */
-.ces-container {
+/* کانتینر رعد و برق و چرخ */
+.lightning-wrapper {
   position: relative;
-  width: 300px;
-  height: 300px;
-  margin: auto;
-  text-align: center;
+  display: inline-block;
+  margin-bottom: 20px;
 }
 
-/* چرخ با افکت چرخش */
-.wheel {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100px;
-  height: 100px;
-  transform: translate(-50%, -50%);
-  animation: spin 4s linear infinite;
-  z-index: 2;
-}
-
-/* رعد و برق با افکت چشمک‌زن */
+/* رعد و برق */
 .lightning {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  width: 60px;
-  transform: translateX(-50%);
+  width: 200px;
   animation: flicker 1s infinite;
-  z-index: 3;
 }
 
-/* انیمیشن چرخش */
+/* چرخ روی انتهای رعد و برق */
+.wheel-on-lightning {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: center;
+  width: 60px;
+  height: 60px;
+  z-index: 2;
+  animation: spin 4s linear infinite;
+}
+
 @keyframes spin {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* انیمیشن چشمک‌زن */
+/* خط اتصال بین چرخ و رعد و برق */
+.connector-line {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  height: 30px;
+  background-color: #ffcc00;
+  transform: translateX(-50%);
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* انیمیشن چشمک‌زن رعد و برق */
 @keyframes flicker {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.3; transform: scale(1.1); }
+  50% { opacity: 0.4; transform: scale(1.2); }
 }
 
 /* لوگوی اصلی */
 .ces-logo {
-  width: 100%;
+  width: 200px;
   height: auto;
-  z-index: 1;
 }
 
 /* دکمه اشتراک در صفحه اصلی */
@@ -128,6 +137,7 @@
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
 /* فرم انتقاد و پیشنهاد */
 .feedback-form {
   margin-top: 40px;

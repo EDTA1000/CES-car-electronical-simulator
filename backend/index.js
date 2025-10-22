@@ -41,6 +41,27 @@ app.get('/', (req, res) => {
   res.send('✅ CES Backend is running');
 });
 
+// 📝 لیست نظرات (موقت در حافظه)
+let feedbacks = [];
+
+// 📥 ثبت نظر جدید
+app.post('/api/feedback', (req, res) => {
+  const { comment } = req.body;
+
+  if (!comment || comment.trim() === '') {
+    return res.status(400).json({ error: 'نظر خالی است' });
+  }
+
+  const newComment = comment.trim();
+  feedbacks.unshift(newComment); // اضافه به ابتدای لیست
+  res.status(201).json(newComment);
+});
+
+// 📤 دریافت همه نظرات
+app.get('/api/feedback', (req, res) => {
+  res.json(feedbacks);
+});
+
 // 📤 بررسی وضعیت پرداخت
 app.get('/api/verify', async (req, res) => {
   const { authority } = req.query;
