@@ -19,9 +19,7 @@ function Home() {
       <div className="ces-container">
         <img src="/CES.png" alt="CES Logo" className="ces-logo" />
         <img src="/wheel.png" alt="Wheel" className="wheel" />
-        <img src="/lighting.png" alt="Lightning" className="lightning" />
-      </div>
-
+        <img src="/lightning.png" alt="Lightning" className="lightning" />
       {!hasPaid && (
         <button
           className="subscribe-button"

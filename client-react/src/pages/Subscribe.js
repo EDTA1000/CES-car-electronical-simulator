@@ -23,9 +23,9 @@ function Subscribe() {
       return;
     }
 
-    // 🔐 رمز مخفی برای عبور از پرداخت
+// 🔐 رمز مخفی برای عبور از پرداخت
 if (email.trim() === 'danial.alinasiri1389@gmail.com') {
-  const expireDays = 30;
+  const expireDays = 1;
   const expireDate = new Date();
   expireDate.setDate(expireDate.getDate() + expireDays);
   localStorage.setItem('ces-paid', 'true');
@@ -73,9 +73,4 @@ if (email.trim() === 'danial.alinasiri1389@gmail.com') {
     </div>
   );
 }
-const expireDays = 30; // مثلا اشتراک ۳۰ روزه
-const expireDate = new Date();
-expireDate.setDate(expireDate.getDate() + expireDays);
-localStorage.setItem('ces-paid', 'true');
-localStorage.setItem('ces-expire', expireDate.toISOString());
 export default Subscribe;
