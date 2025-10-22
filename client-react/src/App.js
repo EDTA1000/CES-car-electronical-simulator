@@ -17,9 +17,9 @@ function Home() {
   return (
     <div className="App">
       <div className="ces-container">
-        <img src="/CES.png" alt="CES Logo" className="ces-logo" />
-        <img src="/wheel.png" alt="Wheel" className="wheel" />
-        <img src="/lightning.png" alt="Lightning" className="lightning" />
+        <img src={`${process.env.PUBLIC_URL}/CES.png`} alt="CES Logo" className="ces-logo" />
+        <img src={`${process.env.PUBLIC_URL}/wheel.png`} alt="Wheel" className="wheel" />
+        <img src={`${process.env.PUBLIC_URL}/lightning.png`} alt="Lightning" className="lightning" />
       {!hasPaid && (
         <button
           className="subscribe-button"
