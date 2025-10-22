@@ -21,7 +21,11 @@ function Verify() {
         const data = await res.json();
 
         if (data.success) {
+          const expireDays = 30;
+          const expireDate = new Date();
+          expireDate.setDate(expireDate.getDate() + expireDays);
           localStorage.setItem('ces-paid', 'true');
+          localStorage.setItem('ces-expire', expireDate.toISOString());
           setStatus('✅ پرداخت با موفقیت انجام شد! در حال انتقال...');
           setTimeout(() => {
             window.location.href = '/CES-car-electronical-simulator/';
@@ -47,5 +51,9 @@ function Verify() {
     </div>
   );
 }
-
+const expireDays = 30; // مثلا اشتراک ۳۰ روزه
+const expireDate = new Date();
+expireDate.setDate(expireDate.getDate() + expireDays);
+localStorage.setItem('ces-paid', 'true');
+localStorage.setItem('ces-expire', expireDate.toISOString());
 export default Verify;

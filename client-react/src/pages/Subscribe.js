@@ -24,12 +24,15 @@ function Subscribe() {
     }
 
     // 🔐 رمز مخفی برای عبور از پرداخت
-    if (email.trim() === 'danial.alinasiri1389@gmail.com') {
-      localStorage.setItem('ces-paid', 'true');
-      window.location.href = '/CES-car-electronical-simulator/';
-      return;
-    }
-
+if (email.trim() === 'danial.alinasiri1389@gmail.com') {
+  const expireDays = 30;
+  const expireDate = new Date();
+  expireDate.setDate(expireDate.getDate() + expireDays);
+  localStorage.setItem('ces-paid', 'true');
+  localStorage.setItem('ces-expire', expireDate.toISOString());
+  window.location.href = '/CES-car-electronical-simulator/';
+  return;
+}
     try {
       const res = await fetch('https://ces-backend-kltl.onrender.com/api/payment', {
         method: 'POST',
@@ -70,5 +73,9 @@ function Subscribe() {
     </div>
   );
 }
-
+const expireDays = 30; // مثلا اشتراک ۳۰ روزه
+const expireDate = new Date();
+expireDate.setDate(expireDate.getDate() + expireDays);
+localStorage.setItem('ces-paid', 'true');
+localStorage.setItem('ces-expire', expireDate.toISOString());
 export default Subscribe;
