@@ -27,7 +27,7 @@ function Home() {
       }
     } else {
       setHasPaid(false);
-    }
+   }
   }, []);
 
   return (
