@@ -1,8 +1,7 @@
-import './App.css';
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import './App.css'; import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import Subscribe from './pages/Subscribe';
-import Verify from './pages/Verify';
-import React, { useEffect, useState } from 'react';
+import Verify from './pages/Verify'; 
+import React, { useEffect, useState } from 'react'; 
 import FeedbackForm from './components/FeedbackForm';
 
 function Home() {
@@ -16,52 +15,52 @@ function Home() {
     if (paid && expire) {
       const now = new Date();
       const expireDate = new Date(expire);
-
       if (expireDate > now) {
-        setHasPaid(true); // اشتراک هنوز معتبره
+        setHasPaid(true);
       } else {
-        // اشتراک منقضی شده
         localStorage.removeItem('ces-paid');
         localStorage.removeItem('ces-expire');
         setHasPaid(false);
       }
     } else {
       setHasPaid(false);
-   }
+    }
   }, []);
 
   return (
     <div className="App">
-     <div className="ces-container">
-      <div className="left-side">
-       <img src={`${process.env.PUBLIC_URL}/wheel.png`} alt="Wheel" className="wheel" />
-       <img src={`${process.env.PUBLIC_URL}/lightاning.png`} alt="Lightning" className="lightning" />
-       </div>
-         <img src={`${process.env.PUBLIC_URL}/CES.png`} alt="CES Logo" className="ces-logo" />
-       </div>
+      <div className="ces-container">
+        <div className="left-side">
+          <div className="lightning-wrapper">
+            <img src={`${process.env.PUBLIC_URL}/lightning.png`} alt="Lightning" className="lightning" />
+            <div className="wheel-on-lightning">
+              <img src={`${process.env.PUBLIC_URL}/wheel.png`} alt="wheel" />
+            </div>
+            <div className="connector-line"></div>
+          </div>
+        </div>
+      </div>
+
+      <img src={`${process.env.PUBLIC_URL}/CES.png`} alt="CES" className="ces-logo" />
+
       {!hasPaid && (
-        <button
-          className="subscribe-button"
-          onClick={() => navigate('/subscribe')}
-        >
+        <button className="subscribe-button" onClick={() => navigate('/subscribe')}>
           اشتراک
         </button>
       )}
 
       {hasPaid && (
-        <p style={{ marginTop: '20px', color: 'green', fontSize: '1.2rem' }}>
+        <p className="welcome-message">
           ✅ اشتراک شما فعال است. خوش آمدید!
         </p>
       )}
 
-      {/* ✅ فرم انتقاد و پیشنهاد */}
       <div style={{ marginTop: '40px' }}>
         <FeedbackForm />
       </div>
     </div>
   );
 }
-
 function App() {
   return (
     <BrowserRouter basename="/CES-car-electronical-simulator">
