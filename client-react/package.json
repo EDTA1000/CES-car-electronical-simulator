@@ -2,7 +2,7 @@
   "name": "client-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://edta1000.github.io/CES-car-electronical-simulator",
+  "homepage": "https://ces-car-electronical-simulator.vercel.app",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
