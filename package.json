@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "client-react",
   "version": "0.1.0",
@@ -41,3 +42,22 @@
     ]
   }
 }
+=======
+{
+  "name": "subscription-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "stripe": "^12.0.0"
+  }
+}
+>>>>>>> ac2b36e217c1fcc7120296ee86b4fb3c90460d67
