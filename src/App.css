@@ -1,0 +1,186 @@
+/* ساختار کلی اپلیکیشن */
+.App {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+/* کانتینر رعد و برق و چرخ */
+.lightning-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+/* رعد و برق */
+.lightning {
+  width: 300px;
+  height: auto;
+  object-fit: contain;
+  animation: flicker 1s infinite;
+}
+
+/* چرخ روی انتهای رعد و برق */
+.wheel-on-lightning {
+  position: absolute;
+  top: 30px;
+  left: 40%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wheel-on-lightning img {
+  transform-origin: center center;
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to { transform: translateX(-50%) rotate(360deg); }
+}
+/*جذابیت بیشتر*/
+.lightning-wrapper:hover .lightning {
+  filter: drop-shadow(0 0 100px yellow);
+}
+
+.wheel-on-lightning:hover {
+  transform: translateX(-50%) rotate(0deg) scale(1.2);
+}
+
+/* خط اتصال بین چرخ و رعد و برق */
+.connector-line {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  width: 4px;
+  height: 30px;
+  background-color: #ffcc00;
+  transform: translateX(-50%);
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* انیمیشن چشمک‌زن رعد و برق */
+@keyframes flicker {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.2); }
+}
+
+/* لوگوی اصلی */
+.ces-logo {
+  width: 400px;
+  height: auto;
+}
+
+/* دکمه اشتراک در صفحه اصلی */
+.subscribe-button {
+  background-color: #61dafb;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+.subscribe-button:hover {
+  background-color: #21a1f1;
+}
+
+/* پیام خوش‌آمد برای کاربران پرداخت‌شده */
+.welcome-message {
+  color: green;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* صفحه اشتراک */
+.subscribe-page {
+  text-align: center;
+  margin-top: 100px;
+  color: #333;
+}
+
+/* فیلد ایمیل */
+.email-input {
+  padding: 10px;
+  margin-top: 20px;
+  width: 250px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* دکمه ثبت‌نام */
+.submit-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.submit-button:hover {
+  background-color: #005fa3;
+}
+
+/* پیام موفقیت یا خطا */
+.success-message {
+  color: green;
+  margin-top: 15px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+.error-message {
+  color: red;
+  margin-top: 15px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* انیمیشن ظاهر شدن پیام‌ها */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* فرم انتقاد و پیشنهاد */
+.feedback-form {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* فیلد متن پیام */
+.feedback-textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+  resize: vertical;
+}
+
+/* پیام وضعیت ارسال */
+.status-message {
+  margin-top: 10px;
+  font-weight: bold;
+  color: green;
+  animation: fadeIn 0.5s ease-in-out;
+}
