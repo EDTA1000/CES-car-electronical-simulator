@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 {
   "name": "client-react",
   "version": "0.1.0",
@@ -42,7 +42,6 @@
     ]
   }
 }
-=======
 {
   "name": "subscription-backend",
   "version": "1.0.0",
@@ -60,4 +59,4 @@
     "stripe": "^12.0.0"
   }
 }
->>>>>>> ac2b36e217c1fcc7120296ee86b4fb3c90460d67
+
