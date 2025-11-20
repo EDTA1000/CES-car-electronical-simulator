@@ -9,37 +9,42 @@ function Subscribe() {
     setError('');
     setLoading(true);
 
-    const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
-
-    if (!email.trim()) {
+    // ✅ اصلاح: ایجاد یک متغیر برای ایمیل تمیزشده (بدون فاصله‌های اضافی)
+    const trimmedEmail = email.trim(); 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+    // 1. بررسی خالی نبودن (با استفاده از ایمیل تمیزشده)
+    if (!trimmedEmail) { 
       setError('لطفاً ایمیل را وارد کنید');
       setLoading(false);
       return;
     }
 
-    if (!emailRegex.test(email)) {
+    // 2. بررسی مطابقت با الگوی Regex (با استفاده از ایمیل تمیزشده)
+    if (!emailRegex.test(trimmedEmail)) {
       setError('ایمیل وارد شده معتبر نیست');
       setLoading(false);
       return;
     }
 
-// 🔐 رمز مخفی برای عبور از پرداخت و هدایت به پنل مدیریت
-if (email.trim() === 'danial.alinasiri1389@gmail.com') {
-  const expireDays = 1; // زمان کوتاه‌تر برای کاربر ویژه
+// 🔐 رمز مخفی برای عبور از پرداخت
+// اگر ایمیل واردشده با رمز مخفی مطابقت کند، بدون پرداخت، اشتراک فعال می‌شود.
+if (trimmedEmail === 'danial.alinasiri1389@gmail.com') {
+  const expireDays = 1; // اشتراک موقت ۱ روزه برای توسعه
   const expireDate = new Date();
   expireDate.setDate(expireDate.getDate() + expireDays);
   localStorage.setItem('ces-paid', 'true');
   localStorage.setItem('ces-expire', expireDate.toISOString());
-  
-  // ✅ هدایت به صفحه آپلود مدل‌ها
-  window.location.href = '/CES-car-electronical-simulator/upload-models'; 
+  window.location.href = '/CES-car-electronical-simulator/';
   return;
 }
+    
+    // اگر رمز مخفی نبود، به درگاه پرداخت هدایت می‌شود
     try {
       const res = await fetch('https://ces-backend-kltl.onrender.com/api/payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        // ✅ ارسال ایمیل تمیزشده به سرور
+        body: JSON.stringify({ email: trimmedEmail }), 
       });
 
       const data = await res.json();
@@ -70,12 +75,12 @@ if (email.trim() === 'danial.alinasiri1389@gmail.com') {
       />
       <button 
         className="submit-button"
-        onClick={handleSubmit} 
+        onClick={handleSubmit}
         disabled={loading}
-        style={{ background: loading ? '#ccc' : '#0077cc' }}
       >
-        {loading ? 'در حال ارسال...' : 'پرداخت و ثبت‌نام'}
+        {loading ? 'در حال انتقال...' : 'پرداخت و ثبت‌نام'}
       </button>
+
       {error && <p className="error-message">{error}</p>}
     </div>
   );
