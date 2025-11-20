@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 
 // ✅ تعریف مدل‌های ماشین و قطعات (همان لیست استفاده شده در assembly-logic.js)
 const SIMULATOR_MODELS = [
@@ -18,7 +18,7 @@ const SIMULATOR_MODELS = [
 ];
 
 function Dashboard() {
-    const [models, setModels] = useState(SIMULATOR_MODELS);
+    const [models] = useState(SIMULATOR_MODELS);
     
     // ✅ تابع جدید برای شروع شبیه‌سازی و هدایت
     const handleStartSim = (modelId) => {
