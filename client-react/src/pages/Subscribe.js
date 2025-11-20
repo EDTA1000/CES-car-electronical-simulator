@@ -9,7 +9,7 @@ function Subscribe() {
     setError('');
     setLoading(true);
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
 
     if (!email.trim()) {
       setError('لطفاً ایمیل را وارد کنید');
@@ -23,14 +23,16 @@ function Subscribe() {
       return;
     }
 
-// 🔐 رمز مخفی برای عبور از پرداخت
+// 🔐 رمز مخفی برای عبور از پرداخت و هدایت به پنل مدیریت
 if (email.trim() === 'danial.alinasiri1389@gmail.com') {
-  const expireDays = 1;
+  const expireDays = 1; // زمان کوتاه‌تر برای کاربر ویژه
   const expireDate = new Date();
   expireDate.setDate(expireDate.getDate() + expireDays);
   localStorage.setItem('ces-paid', 'true');
   localStorage.setItem('ces-expire', expireDate.toISOString());
-  window.location.href = '/CES-car-electronical-simulator/';
+  
+  // ✅ هدایت به صفحه آپلود مدل‌ها
+  window.location.href = '/CES-car-electronical-simulator/upload-models'; 
   return;
 }
     try {
@@ -66,11 +68,17 @@ if (email.trim() === 'danial.alinasiri1389@gmail.com') {
         onChange={(e) => setEmail(e.target.value)}
         disabled={loading}
       />
-      <button className="submit-button" onClick={handleSubmit} disabled={loading}>
-        {loading ? 'در حال پردازش...' : 'پرداخت ۵۰۰٬۰۰۰ تومان'}
+      <button 
+        className="submit-button"
+        onClick={handleSubmit} 
+        disabled={loading}
+        style={{ background: loading ? '#ccc' : '#0077cc' }}
+      >
+        {loading ? 'در حال ارسال...' : 'پرداخت و ثبت‌نام'}
       </button>
-      {error && <p className="error-message" style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
+      {error && <p className="error-message">{error}</p>}
     </div>
   );
 }
+
 export default Subscribe;
